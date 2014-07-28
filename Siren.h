@@ -14,7 +14,7 @@ class Siren
   int _delay;
 
   public:
-  Siren(int _portId, int _delay = 1000);
+  Siren(int portId, int delay = 1000);
 
   void on();
   void off();
