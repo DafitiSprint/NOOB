@@ -11,7 +11,7 @@ Siren *siren;
 Websocket *websocket;
 
 char *host = "0.0.0.0";
-int port = 8881;
+int port = 80;
 
 byte mac[] = { 
   0x90, 0xA2, 0xDA, 0x00, 0xF2, 0x78 };
@@ -43,7 +43,8 @@ void loop()
      data = websocket->getData();
      
      if (data.length() > 0) {
-       Serial.println(data);  
+       siren->on();
+       siren->off();
      }
   } else {
     Serial.println("ERROR");
