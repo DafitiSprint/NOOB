@@ -19,10 +19,10 @@ node app
 
 #### More instructions in following README.md files
 arduino/README.md
-server/README.md
+webserver/README.md
 
 #### Arduino
 The arduino directory contains the files that must be compiled into an arduino
 
-#### Server
+#### Webserver
 The server directory contains the nodejs project that will be the webserver to send notifications to all clients (arduinos, TVs, etc.) connected thru websocket
