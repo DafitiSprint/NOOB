@@ -1,0 +1,9 @@
+{
+  "name": "dafiti-alert",
+  "description": "Dafit Alert is a tool to control monitoring alerts",
+  "author": "Luiz Guilherme <luizguilhermesj00@gmail.com",
+  "dependencies": {
+    "express": "latest",
+    "ws": "latest"
+  }
+}
