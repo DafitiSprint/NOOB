@@ -10,10 +10,10 @@ EthernetClient client;
 Siren *siren;
 Websocket *websocket;
 
-char *host = "10.30.10.67";
-int port = 8083;
+char *host = "0.0.0.0";
+int port = 80;
 
-byte mac[] = {
+byte mac[] = { 
   0x90, 0xA2, 0xDA, 0x00, 0xF2, 0x78 };
 
 void setup()
@@ -47,8 +47,6 @@ void loop()
        siren->off();
      }
   } else {
-    websocket->connect();
     Serial.println("ERROR");
   }
-  delay(1000);
 }
