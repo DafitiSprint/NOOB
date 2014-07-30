@@ -1,9 +1,17 @@
 {
-  "name": "dafiti-alert",
-  "description": "Dafit Alert is a tool to control monitoring alerts",
-  "author": "Luiz Guilherme <luizguilhermesj00@gmail.com",
+  "name": "webserver",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "dependencies": {
-    "express": "latest",
-    "ws": "latest"
+    "express": "~4.2.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "ejs": "~0.8.5"
   }
 }
