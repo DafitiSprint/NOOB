@@ -22,4 +22,3 @@ class Siren
 };
 
 #endif
-
