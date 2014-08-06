@@ -14,7 +14,7 @@ Websocket::Websocket(EthernetClient client, char *host, char *path, int port)
   _host   = host;
   _path   = path;
   _port   = port;
-  
+
   _wsClient.path = path;
   _wsClient.host = host;
 }
@@ -25,21 +25,27 @@ void Websocket::connect()
     _isConnected = false;
     return;
   }
-  
+
   if (!_wsClient.handshake(_client)) {
     _isConnected = false;
     return;
   }
-  
+
   _isConnected = true;
 }
 
 bool Websocket::isConnected()
 {
-  return _isConnected; 
+  if (_isConnected && _client.connected()) {
+    return true;
+  }
+
+  _client.stop();
+
+  return false;
 }
 
 char* Websocket::getData()
 {
-  return _wsClient.getData(); 
+  return _wsClient.getData();
 }
