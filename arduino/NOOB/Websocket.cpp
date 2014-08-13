@@ -36,7 +36,7 @@ void Websocket::connect()
 
 bool Websocket::isConnected()
 {
-  if (_isConnected && _client.connected()) {
+  if (_client.available() && _client.connected() && _isConnected) {
     return true;
   }
 
