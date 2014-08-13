@@ -19,7 +19,8 @@ node app
 
 #### More instructions in following README.md files
 - arduino/README.md
-- webserver/README.md
+- node-server/README.md
+- python-server/README.md
 
 #### Arduino
 The arduino directory contains the files that must be compiled into an arduino

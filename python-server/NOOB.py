@@ -6,7 +6,7 @@ from alert import AlertHandler
 
 from tornado.options import define, options, parse_command_line
 
-define("port", default=8888, help="run on the given port", type=int)
+define("port", default=80, help="run on the given port", type=int)
 
 app = tornado.web.Application([
     (r'/', IndexHandler),
