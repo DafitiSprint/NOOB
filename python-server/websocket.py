@@ -18,14 +18,18 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
         clients[self.id] = {"id": self.id, "object": self}
 
 
-    def on_message(self, message):        
+    def on_message(self, message):
         """
         when we receive some message we want some message handler..
         for this example i will just print message to console
         """
-        print "Client %s received a message : %s" % (self.id, message)        
-        
+        print "Client %s received a message : %s" % (self.id, message)
+
 
     def on_close(self):
-        if self.id in lients:
+        if self.id in clients:
             del clients[self.id]
+
+
+    def check_origin(self, origin):
+        return True
