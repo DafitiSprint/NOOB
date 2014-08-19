@@ -8,9 +8,15 @@
     "scripts": ["background.js"],
     "persistent": true
   },
-  "permissions": [ "tabs" ],
+  "permissions": [
+    "tabs",
+    "notifications"
+  ],
+  "web_accessible_resources": [
+    "noob_dft_icon_red.png"
+  ],
   "browser_action": {
-    "default_icon": "dft_icon.png",
+    "default_icon": "noob_dft_icon_green.png",
     "default_popup": "popup.html"
   }
 }

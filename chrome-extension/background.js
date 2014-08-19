@@ -5,6 +5,7 @@ ws.onmessage = function(m){
   chrome.runtime.sendMessage('alert', m);
   console.log(m);
   NOOB.addMessage(m.data);
+  NOOB.notification(m.data);
 }
 
 var NOOB = {
@@ -14,16 +15,25 @@ var NOOB = {
   },
   addMessage: function(message) {
     this.messages.push(message);
+  },
+  notification: function(message) {
+    chrome.notifications.create('', {
+      "type": "basic",
+      "iconUrl":"noob_dft_icon_red.png",
+      "title": "Dafiti Alert",
+      "message": message
+    }, function (e){ console.log(e) });
+    this.setIcon('red');
+  },
+  setIcon: function(color) {
+    chrome.browserAction.setIcon({path: 'noob_dft_icon_'+color+'.png'})
   }
 }
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  if(request.message == 'list-messages'){
+  console.log(request);
+  if(request.message == 'list-alerts'){
     sendResponse({
-      from: "background",
-      message: NOOB.getMessages()
-    });
-    chrome.runtime.sendMessage({
       from: "background",
       message: NOOB.getMessages()
     });
