@@ -2,17 +2,60 @@
 <html>
   <head>
     <title>Dafiti Alert - Config</title>
+    <style>
+      body{
+        margin: 0;
+        padding: 0;
+        background: #bdc3c7;
+        font: 1.0em/1.6em "Lato", Arial, Sans-serif;
+      }
+      .container{
+        max-width: 920px;
+        margin: 0 auto;
+        background: #FFF;
+        padding: 20px;
+      }
+      .container h1{
+        margin: 0 0 20px 0;
+        padding: 0 0 20px 0;
+        border-bottom: 1px solid #999;
+      }
+      label{
+        display: block;
+      }
+      input, button{
+        font: 1.3em "Lato", Arial, Sans-serif;
+      }
+      input[type=text]{
+        border-radius: 5px;
+        border: 2px solid #bdc3c7;
+        padding: 5px 20px;
+      }
+      button{
+        height: 38px;
+        border-radius: 5px;
+        border: 2px solid #2ecc71;
+        padding: 0 20px;
+        background: #2ecc71; 
+        color: #FFF;
+      }
+      .disclaimer{
+        font-size: 0.8em;
+        color: #7f8c8d;
+      }
+    </style>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
-  <h1> Dafiti Alert - Config</h1>
-  <div>
-    <ul>
-      <li>
-        <label>Websocket Server</label>
-        <input type="text" id="websocket_server"/>
-      </li>
-    </ul>
-    <button id="save">Save</button>
+  <div class="container">
+    <h1> Dafiti Alert - Config</h1>
+    <div class="fields">
+        <label for="websocket_server">Websocket Server</label>
+        <input type="text" id="websocket_server"/><button id="save">Save</button>
+    </div>
+    <p class="disclaimer">
+      proudly done by your friendly neigboorhood front-end team + Golimar
+    </p>
   </div>
     <script src="config.js"></script>
   </body>
