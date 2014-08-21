@@ -2,17 +2,21 @@
 <html>
   <head>
     <title>Dafiti Alert - Config</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href='app.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
-  <h1> Dafiti Alert - Config</h1>
-  <div>
-    <ul>
-      <li>
-        <label>Websocket Server</label>
-        <input type="text" id="websocket_server"/>
-      </li>
-    </ul>
-    <button id="save">Save</button>
+  <div class="container">
+    <div class="container-child">
+      <h1> Dafiti Alert - Config</h1>
+      <div class="fields">
+          <label for="websocket_server">Websocket Server</label>
+          <input type="text" id="websocket_server"/><button id="save">Save</button>
+      </div>
+      <p class="disclaimer">
+        proudly done by your friendly neigboorhood front-end team + Golimar
+      </p>
+    </div>
   </div>
     <script src="config.js"></script>
   </body>
