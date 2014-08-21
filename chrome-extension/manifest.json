@@ -16,7 +16,7 @@
     "noob_dft_icon_red.png"
   ],
   "browser_action": {
-    "default_icon": "noob_dft_icon_green.png",
-    "default_popup": "popup.html"
-  }
+    "default_icon": "noob_dft_icon_red_32.png"
+  },
+  "options_page": "config.html"
 }
