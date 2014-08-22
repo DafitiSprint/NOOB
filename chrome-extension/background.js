@@ -5,6 +5,14 @@ var NOOB = {
   messages: [],
   isConnected: false,
   interval : "",
+  
+  getWsServerUrl: function() {
+    return (localStorage.getItem('websocket_server') == null) ? "localhost:80" : localStorage.getItem('websocket_server')
+  },
+
+  getConnInterval: function() {
+    return (localStorage.getItem('interval_connection') == null) ? 3600000 : localStorage.getItem('interval_connection')
+  },
 
   getMessages: function() {
     return this.messages;
@@ -40,45 +48,48 @@ var NOOB = {
   },
 
   connect: function() {
-    this.websocketServer = new WebSocket('ws://'+localStorage.getItem('websocket_server'));
+    this.websocketServer = new WebSocket('ws://'+this.getWsServerUrl());
     this.websocketServer.onopen = this.onopen;
     this.websocketServer.onmessage = this.onmessage;
     this.websocketServer.onclose = this.onclose;
+
     //SetInterval returns typeof number not function. 
-    if (typeof(interval)=="number"){
-      clearInterval(interval);  
+    if (typeof(this.interval)=="number"){
+      clearInterval(this.interval);  
     }
   },
-  disconnect: function(){
+
+  disconnect: function() {
     this.websocketServer.close();
   },
+
   onopen: function() {
     NOOB.isConnected = true;
     NOOB.setIcon.apply(NOOB, ['green']);
     NOOB.notification.apply(NOOB, ["Notification server is up","green"]);
   },
 
-  onmessage: function(m){
+  onmessage: function(m) {
     chrome.runtime.sendMessage('alert', m);
     NOOB.addMessage.apply(NOOB, [m.data]);
     NOOB.notification.apply(NOOB, [m.data]);
   },
 
-  onclose: function(){
+  onclose: function() {
     NOOB.notification.apply(NOOB, ['Notification Server is Down\nClick the icon to connect or wait 1 hour', 'yellow']);
     NOOB.isConnected = false;
     NOOB.setIcon.apply(NOOB, ['red']);
-    interval = setInterval(function(){
+    NOOB.interval = setInterval(function(){
       NOOB.connect.call(NOOB);
-    }, localStorage.getItem('interval_connection'));
+    }, NOOB.getConnInterval());
   }
 
 }
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-  if(NOOB.isConnected){
+  if (NOOB.isConnected) {
     NOOB.disconnect();
-  }else{
+  } else {
     NOOB.getConnection();
   }
   
