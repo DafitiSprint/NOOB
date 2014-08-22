@@ -1,6 +1,6 @@
 function save_options() {
     localStorage.setItem('websocket_server', document.getElementById('websocket_server').value);
-    localStorage.setItem('interval_connection',document.getElementById('interval_connection').value);
+    localStorage.setItem('interval_connection',document.getElementById('interval_connection').value * 60000);
 
     chrome.runtime.sendMessage({from: "config", message: "connect"});
 
@@ -21,7 +21,7 @@ function restore_options() {
     }
 
     document.getElementById('websocket_server').value = websocket_server;
-    document.getElementById('interval_connection').value = interval_connection;
+    document.getElementById('interval_connection').value = interval_connection / 60000;
 }
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
