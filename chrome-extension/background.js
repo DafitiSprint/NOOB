@@ -4,6 +4,7 @@ var NOOB = {
 
   messages: [],
   isConnected: false,
+  interval : "",
 
   getMessages: function() {
     return this.messages;
@@ -28,7 +29,6 @@ var NOOB = {
   },
 
   setIcon: function(color) {
-      console.log(color);
     chrome.browserAction.setIcon({path: 'noob_dft_icon_'+color+'_32.png'});
   },
 
@@ -40,16 +40,22 @@ var NOOB = {
   },
 
   connect: function() {
-    console.log(this)
     this.websocketServer = new WebSocket('ws://'+localStorage.getItem('websocket_server'));
     this.websocketServer.onopen = this.onopen;
     this.websocketServer.onmessage = this.onmessage;
     this.websocketServer.onclose = this.onclose;
+    //SetInterval returns typeof number not function. 
+    if (typeof(interval)=="number"){
+      clearInterval(interval);  
+    }
   },
-
+  disconnect: function(){
+    this.websocketServer.close();
+  },
   onopen: function() {
     NOOB.isConnected = true;
     NOOB.setIcon.apply(NOOB, ['green']);
+    NOOB.notification.apply(NOOB, ["Notification server is up","green"]);
   },
 
   onmessage: function(m){
@@ -62,15 +68,25 @@ var NOOB = {
     NOOB.notification.apply(NOOB, ['Notification Server is Down\nClick the icon to connect or wait 1 hour', 'yellow']);
     NOOB.isConnected = false;
     NOOB.setIcon.apply(NOOB, ['red']);
-    setTimeout(function(){
+    interval = setInterval(function(){
       NOOB.connect.call(NOOB);
-    }, 3600000);
+    }, localStorage.getItem('interval_connection'));
   }
 
 }
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-  NOOB.getConnection();
+  if(NOOB.isConnected){
+    NOOB.disconnect();
+  }else{
+    NOOB.getConnection();
+  }
+  
+});
+chrome.runtime.onMessage.addListener(function(r,s){
+  if (r.from === "config"){
+    NOOB[r.message]();
+  }
 });
 
 NOOB.getConnection();

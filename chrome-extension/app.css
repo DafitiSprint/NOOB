@@ -39,6 +39,8 @@ button{
   background: rgba(46, 204, 113,1.0); 
   color: #FFF;
   cursor: pointer;
+  display: block;
+  margin: 20px 0;
 }
 button:hover{
   border: 2px solid rgba(39, 174, 96,1.0);
