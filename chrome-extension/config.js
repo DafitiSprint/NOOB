@@ -1,5 +1,6 @@
 function save_options() {
     localStorage.setItem('websocket_server', document.getElementById('websocket_server').value);
+    alert('salvo');
 }
 
 function restore_options() {
