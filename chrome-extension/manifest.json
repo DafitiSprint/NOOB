@@ -18,5 +18,6 @@
   "browser_action": {
     "default_icon": "noob_dft_icon_red_32.png"
   },
-  "options_page": "config.html"
+  "options_page": "config.html",
+  "icons": { "128": "noob_dft_icon_red.png" }
 }
