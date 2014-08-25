@@ -1,5 +1,6 @@
 import tornado.ioloop
 import tornado.web
+from dispatcher import MethodDispatcher
 from websocket import WebSocketHandler
 from alert import AlertHandler
 
@@ -9,7 +10,7 @@ define("port", default=80, help="run on the given port", type=int)
 
 app = tornado.web.Application([
     (r'/', WebSocketHandler),
-    (r'/alert', AlertHandler),
+    (r'/alert/.*', AlertHandler),
 ])
 
 if __name__ == '__main__':

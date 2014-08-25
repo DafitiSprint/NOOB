@@ -48,7 +48,7 @@ var NOOB = {
   },
 
   connect: function() {
-    this.websocketServer = new WebSocket('ws://'+this.getWsServerUrl());
+    this.websocketServer = new WebSocket('ws://'+this.getWsServerUrl()+'?type=user-browser');
     this.websocketServer.onopen = this.onopen;
     this.websocketServer.onmessage = this.onmessage;
     this.websocketServer.onclose = this.onclose;
@@ -70,9 +70,9 @@ var NOOB = {
   },
 
   onmessage: function(m) {
-    chrome.runtime.sendMessage('alert', m);
-    NOOB.addMessage.apply(NOOB, [m.data]);
-    NOOB.notification.apply(NOOB, [m.data]);
+    var data = JSON.parse(m.data);
+    NOOB.addMessage.apply(NOOB, [data.text]);
+    NOOB.notification.apply(NOOB, [data.text, data.color]);
   },
 
   onclose: function() {
