@@ -1,1 +1,1 @@
-web: python NOOB.py
+web: python python-server/NOOB.py
