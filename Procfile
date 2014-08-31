@@ -1,1 +1,1 @@
-web: python python-server/NOOB.py --port=8083
+web: python python-server/NOOB.py --port=$PORT
