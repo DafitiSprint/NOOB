@@ -7,3 +7,6 @@
 [submodule "node-server"]
 	path = node-server
 	url = git@github.com:DafitiSprint/NOOB-Node-Server.git
+[submodule "siren"]
+    path = siren
+    url = git@github.com:DafitiSprint/NOOB-Siren.git
