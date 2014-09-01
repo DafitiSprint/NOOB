@@ -1,0 +1,12 @@
+[submodule "chrome-extension"]
+	path = chrome-extension
+	url = git@github.com:DafitiSprint/NOOB-Chrome-Extension.git
+[submodule "python-server"]
+	path = python-server
+	url = git@github.com:DafitiSprint/NOOB-Python-Server.git
+[submodule "node-server"]
+	path = node-server
+	url = git@github.com:DafitiSprint/NOOB-Node-Server.git
+[submodule "siren"]
+    path = siren
+    url = git@github.com:DafitiSprint/NOOB-Siren.git
